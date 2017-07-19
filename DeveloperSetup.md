@@ -32,6 +32,6 @@ Once you are connected you sheed see a little red button on the left that signal
 3. Unfortunately your wallet is by default empty - has 0 Ether. Copy your wallet adress and lets change that.
 ![Metamask](./images/metamaskaccount.png)
 4. Go to the url of your Admin site (check output of the Ethereum arm template output), enter your wallet adress and transfer 1000 ether to it.
-![Admin Site](./images/adminsite.png)
+![Admin Site](./images/adminsiteview.png)
 5. Go to the explorer to check the transaction
-![Transfer](./images/transfer.png)
+![Transfer](./images/transferexplorer.png)

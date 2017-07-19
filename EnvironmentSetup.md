@@ -1,14 +1,14 @@
 # Ethereum Consortium Setup on Azure
-There are several deployment templates inside the Azure marketplace. The best option is the 'Ethereum consortium blockchain'. There is a very good description of the template capabilities and the parameters inside this technet article here:
+There are several deployment templates inside the Azure marketplace. The best option is the 'Ethereum consortium blockchain'. A very good description of the template capabilities and the parameters inside can be found in this technet article here:
 [https://gallery.technet.microsoft.com/Bletchley-Ethereum-4bc7d80d](https://gallery.technet.microsoft.com/Bletchley-Ethereum-4bc7d80d)
 
 After the deployment has gone trough you should copy and store the template output for later.
 ![High level setup](./images/deploytemplateoutput.png)
 
 ## Configuration of RPCAPI
-After the deployment you need to configure the rpcapi to allow you to execute calls on the transaction nodes. If you have not done this with after the deployment you will be hit with an error message that sound like this 'The method personal_unlockAccount does not exist/is not available'.
+After the deployment you need to configure the RPC-API to allow you to execute calls to the transaction nodes. If you have not done this with after the deployment you will be hit with an error message that sound like this 'The method personal_unlockAccount does not exist/is not available'.
 
-In order to fix this you need to perform the following on all transaction nodes:
+In order to fix this you need to perform the following changes on all transaction nodes (all nodes containing a tx in their vm name):
 1. Log via SSH into a transaction node (see output for first node)
 ~~~
 ssh -p 3000 gethadmin@XXX.cloudapp.azure.com
@@ -26,7 +26,7 @@ nano -c ~/start-private-blockchain.sh
 56 set +x;
 57 echo "===== Started geth node =====";
 ~~~
-4. Add the following to line 54 after --rpccorsdomain "*" and before >> $GETH_LOG_FILE_PATH 2>&1 &
+4. Add the following to line 54 after `--rpccorsdomain "*"` and before `>> $GETH_LOG_FILE_PATH 2>&1 &`
 ~~~
 --rpcapi "eth,net,web3,admin,personal"
 ~~~
