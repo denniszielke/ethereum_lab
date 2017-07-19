@@ -2,7 +2,7 @@
 There are several deployment templates inside the Azure marketplace. The best option is the 'Ethereum consortium blockchain'. There is a very good description of the template capabilities and the parameters inside this technet article here:
 [https://gallery.technet.microsoft.com/Bletchley-Ethereum-4bc7d80d](https://gallery.technet.microsoft.com/Bletchley-Ethereum-4bc7d80d)
 
-After the deployment has gone trough you should copy and store the template output.
+After the deployment has gone trough you should copy and store the template output for later.
 ![High level setup](./images/deployoutput.png)
 
 ## Configuration of RPCAPI
