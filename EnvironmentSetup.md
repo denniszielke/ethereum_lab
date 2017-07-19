@@ -3,7 +3,7 @@ There are several deployment templates inside the Azure marketplace. The best op
 [https://gallery.technet.microsoft.com/Bletchley-Ethereum-4bc7d80d](https://gallery.technet.microsoft.com/Bletchley-Ethereum-4bc7d80d)
 
 After the deployment has gone trough you should copy and store the template output for later.
-![High level setup](./images/deployoutput.png)
+![High level setup](./images/deploytemplateoutput.png)
 
 ## Configuration of RPCAPI
 After the deployment you need to configure the rpcapi to allow you to execute calls on the transaction nodes. If you have not done this with after the deployment you will be hit with an error message that sound like this 'The method personal_unlockAccount does not exist/is not available'.

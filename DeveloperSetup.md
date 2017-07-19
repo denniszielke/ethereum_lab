@@ -19,17 +19,18 @@ http://boxstarter.org/package/nr/url?https://raw.githubusercontent.com/denniszie
 ~~~
 4. Launch mist it will connect to your environment
 
-You should  see a warning because we have not set up SSL - which is ok so ignore it: ![Mist warning](./images/mistwarning.png)
+You should  see a warning because we have not set up SSL - which is ok so ignore it: ![Mist warning](./images/mistwarningpopup.png)
 
-Once you are connected you sheed see a little red button on the left that signals to you that you are connected to a private-net
-![Mist warning](./images/mistview.png)
+Once you are connected you sheed see a little red button on the left that signals to you that you are connected to a private-net:
+
+![Mist warning](./images/mistnetview.png)
 
 ## Install and configure Metamask
 1. Open Chrome and go to [https://metamask.io/](https://metamask.io/) to install the Metamask chrome plugin
 2. Once metamask is installed and you have created an account, launch it and configure a custom RPC endpoint with your rpc endpoint from your Azure environment.
 ![Metamask](./images/metamask.png)
 3. Unfortunately your wallet is by default empty - has 0 Ether. Copy your wallet adress and lets change that.
-![Metamask](./images/metamaskaccountempty.png)
+![Metamask](./images/metamaskaccount.png)
 4. Go to the url of your Admin site (check output of the Ethereum arm template output), enter your wallet adress and transfer 1000 ether to it.
 ![Admin Site](./images/adminsite.png)
 5. Go to the explorer to check the transaction

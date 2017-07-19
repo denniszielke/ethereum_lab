@@ -9,4 +9,4 @@ There is a customized version of the [https://github.com/etherparty/explorer](ht
 </a> 
 
 After the deployment has been completed you should be able to enter the url of the created app service instance and the list of transactions in your ethereuem blockchain network.
-![Deployment output](./images/explorer.png)
+![Deployment output](./images/exploreoutput.png)
