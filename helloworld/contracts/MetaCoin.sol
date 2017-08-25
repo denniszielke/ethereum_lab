@@ -7,7 +7,26 @@ import "./ConvertLib.sol";
 // coin/token contracts. If you want to create a standards-compliant
 // token, see: https://github.com/ConsenSys/Tokens. Cheers!
 
-contract MetaCoin {
+contract UpgradeableBase {
+    event UpgradeableBaseContractCreated(string contractType, address originatingAddress);
+    event UpgradeableBaseContractUpdated(string contractType, string action, address originatingAddress);
+    
+    string internal ContractType;
+
+    function UpgradeableBase(string contractType) internal {
+        ContractType = contractType;
+    }
+
+    function ContractCreated() internal {
+        UpgradeableBaseContractCreated(ContractType, msg.sender);
+    }
+
+    function ContractUpdated(string action) internal {
+        UpgradeableBaseContractUpdated(ContractType, action, msg.sender);
+    }
+}
+
+contract MetaCoin is UpgradeableBase('MetaCoin'){
 	mapping (address => uint) balances;
 
 	event Transfer(address indexed _from, address indexed _to, uint256 _value);
