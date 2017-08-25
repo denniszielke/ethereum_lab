@@ -39,3 +39,7 @@ nohup geth --datadir $GETH_HOME -verbosity $VERBOSITY --bootnodes $BOOTNODE_URLS
 sudo reboot
 ~~~
 6. If you have more than one transaction node you can connect to them by incrementing the port in the ssh template output (index start with 3000)
+
+
+## Setup VNET Connection
+//todo
