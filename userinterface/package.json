@@ -1,0 +1,15 @@
+{
+  "name": "web-node",
+  "version": "0.0.0",
+  "description": "votingapp",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "author": {
+    "name": "dzielke"
+  },
+  "dependencies": {
+    "express": "4.14.0"
+  }
+}
