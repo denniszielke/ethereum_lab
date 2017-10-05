@@ -1,7 +1,7 @@
 {
-  "name": "web-node",
-  "version": "0.0.0",
-  "description": "votingapp",
+  "name": "userinterface",
+  "version": "1.0.0",
+  "description": "dapp userinterface",
   "main": "server.js",
   "scripts": {
     "start": "node server.js"
