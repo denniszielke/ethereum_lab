@@ -16,7 +16,7 @@ npm install -g ethereumjs-testrpc
 ~~~
 truffle init
 ~~~
-4. If you are running windows you have to rename the created `truffle.js` file to `truffle-config.js` in order for it to work
+4. If you are running windows you have to rename the created `truffle.js` file to `truffle-config.js` in order for it to work. 
 5. Launch VSCode and open the folder 
 ~~~
 code .
@@ -25,6 +25,3 @@ code .
 7. Modify the truffle config file to change the network to your azure network rpc endpoint
 
 A good set of samples can be found here: https://github.com/EthereumEx/blockchain-060 
-
-
-## Upgradable smart contracts

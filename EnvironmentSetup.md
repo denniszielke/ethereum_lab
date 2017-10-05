@@ -41,5 +41,20 @@ sudo reboot
 6. If you have more than one transaction node you can connect to them by incrementing the port in the ssh template output (index start with 3000)
 
 
-## Setup VNET Connection
-//todo
+## Update geth
+
+If you want to update the geth version you need to log into all the nodes and run the following commands:
+```
+sudo apt-get install software-properties-common
+sudo add-apt-repository -y ppa:ethereum/ethereum
+sudo apt-get update
+sudo apt-get install ethereum
+sudo apt-get upgrade
+sudo reboot
+```
+
+This will take a while - also remember to not take down all the nodes at the same time.
+
+Since there is by default no load balancer to get to the mining nodes you have to log into the transaction nodes and from there use the private IPs to access the mining nodes. The ip ranges can be looked up in the azure portal and are distributed in a simple setup:
+10.0.1.4++ (first consortium member)
+10.0.2.4++ (second consortium member)

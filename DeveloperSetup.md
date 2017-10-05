@@ -17,11 +17,24 @@ http://boxstarter.org/package/nr/url?https://raw.githubusercontent.com/denniszie
 ~~~
 --rpc http://default.westeurope.cloudapp.azure.com:8545  
 ~~~
+
+Since Mist 0.91 you can speed up the launch of Mist by using the following additional command line parameter
+~~~
+--light-node
+~~~
+
+You also want to add the following additional parameter to disable swarm
+~~~
+--swarmurl "null"
+~~~
 4. Launch mist it will connect to your environment
 
 You should  see a warning because we have not set up SSL - which is ok so ignore it: ![Mist warning](./images/mistwarningpopup.png)
 
-Once you are connected you sheed see a little red button on the left that signals to you that you are connected to a private-net:
+5. It will take a while for the app to sync
+![](/img/2017-10-05-07-59-49.png)
+
+6. Once you are connected you sheed see a little red button on the left that signals to you that you are connected to a private-net:
 
 ![Mist warning](./images/mistnetview.png)
 
@@ -35,3 +48,16 @@ Once you are connected you sheed see a little red button on the left that signal
 ![Admin Site](./images/adminsiteview.png)
 5. Go to the explorer to check the transaction
 ![Transfer](./images/transferexplorer.png)
+
+## Install and launch testrpc
+TestRPC will simulate a local ethereum blockchain - it mostly will behave like ethereum which facilitates local dev/ testing and should speed up you development cycle.
+
+1. Install testrpc by launching a cmd and running the following command as an admin
+~~~
+npm install -g ethereumjs-testrpc
+~~~
+2. If you run the following command you will get your own localhost rpc endpoint which you can use for the demo apps and apis
+~~~
+testrpc
+~~~
+![](/img/2017-10-05-08-20-50.png)

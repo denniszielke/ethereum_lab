@@ -8,7 +8,13 @@ This project describes how to set up a blockchain environment with samples to ru
 You will need to perform the following steps to get your environment up and configured:
 1. [Deployment and configuration of Azure Ethereum Consortium Blockchain](EnvironmentSetup.md)
 2. [Deployment of Ethereum Explorer Web App](ExplorerSetup.md)
-3. [Deployment of a developer vm (this is where we will write and test smart contract code](DeveloperSetup.md)
-4. [Development and Deployment of a Smart contract using Truffle](DevSmartContract.md)
-5. [Development of a DApp](Dapp.md)
+3. [Setup of a developer vm and tools](DeveloperSetup.md)
 
+## Writing your first smart contract and integrating it into an application
+1. [First smart contract using Mist](HelloSmartContract.md)
+2. [Building an API for your smart contract](HelloSmartApi.md)
+3. [Development and Deployment of a Smart contract using Truffle](DevSmartContract.md)
+4. [Development of a DApp](Dapp.md)
+5. [Deployment of your API or DApp](DeployApps.md)
+
+Happy Hacking!
