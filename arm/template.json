@@ -11,7 +11,7 @@
         },
         "bcweb_repo_url": {
             "type": "string",
-            "defaultValue": "https://github.com/denniszielke/hackbotadvanced.git",
+            "defaultValue": "https://github.com/denniszielke/ethereum_lab.git",
             "metadata": {
                 "description": "The URL for the GitHub repository that contains the project to deploy."
             }
