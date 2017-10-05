@@ -1,0 +1,172 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "deployment_name": {
+            "defaultValue": "dz22",
+            "type": "string",
+            "metadata": {
+                "description": "Short name of the deployment to ensure no name collisions"
+            }
+        },
+        "bcweb_repo_url": {
+            "type": "string",
+            "defaultValue": "https://github.com/denniszielke/hackbotadvanced.git",
+            "metadata": {
+                "description": "The URL for the GitHub repository that contains the project to deploy."
+            }
+        },
+        "rpc_url": {
+            "type": "string",
+            "defaultValue": "",
+            "metadata": {
+                "description": "The URL for Ethereum RPC Endpoint."
+            }
+        }         
+    },
+    "variables": {
+        "components_bcinsights_name": "[concat(parameters('deployment_name'), 'bcinsights')]",
+        "serverfarms_webplan_name": "[concat(parameters('deployment_name'), 'webplan')]",
+        "sites_bcweb_name": "[concat(parameters('deployment_name'), 'bcweb')]",
+        "config_web_name": "[concat(parameters('deployment_name'), 'bcweb/web')]"
+    },
+    "resources": [
+        {
+            "comments": "Generalized from resource:.",
+            "type": "microsoft.insights/components",
+            "kind": "Node.JS",
+            "name": "[variables('components_bcinsights_name')]",
+            "apiVersion": "2014-04-01",
+            "location": "northeurope",
+            "tags": {},
+            "scale": null,
+            "properties": {
+                "ApplicationId": "[variables('components_bcinsights_name')]"
+            },
+            "dependsOn": []
+        },
+        {
+            "comments": "Generalized from resource:",
+            "type": "Microsoft.Web/serverfarms",
+            "sku": {
+                    "name": "B1",
+                    "tier": "Basic",
+                    "size": "B1",
+                    "family": "B",
+                    "capacity": 1
+            },
+            "kind": "app",
+            "name": "[variables('serverfarms_webplan_name')]",
+            "apiVersion": "2015-08-01",
+            "location": "[resourceGroup().location]",
+            "scale": null,
+            "properties": {
+                "name": "[variables('serverfarms_webplan_name')]",
+                "numberOfWorkers": 0
+            },
+            "dependsOn": []
+        },
+        {
+            "comments": "Generalized from resource: .",
+            "type": "Microsoft.Web/sites",
+            "kind": "app",
+            "name": "[variables('sites_bcweb_name')]",
+            "apiVersion": "2015-08-01",
+            "location": "[resourceGroup().location]",
+            "tags": {
+
+            },
+            "scale": null,
+            "properties": {
+                "name": "[variables('sites_bcweb_name')]",
+                "hostNames": [
+                    "[concat(variables('sites_bcweb_name'),'.azurewebsites.net')]"
+                ],
+                "enabledHostNames": [
+                    "[concat(variables('sites_bcweb_name'),'.azurewebsites.net')]",
+                    "[concat(variables('sites_bcweb_name'),'.scm.azurewebsites.net')]"
+                ],
+                "hostNameSslStates": [
+                    {
+                        "name": "[concat(variables('sites_bcweb_name'),'.azurewebsites.net')]",
+                        "sslState": 0,
+                        "thumbprint": null,
+                        "ipBasedSslState": 0
+                    },
+                    {
+                        "name": "[concat(variables('sites_bcweb_name'),'.scm.azurewebsites.net')]",
+                        "sslState": 0,
+                        "thumbprint": null,
+                        "ipBasedSslState": 0
+                    }
+                ],
+                "serverFarmId": "[resourceId('Microsoft.Web/serverfarms', variables('serverfarms_webplan_name'))]"
+            },
+            "resources": [
+                {
+                    "apiVersion": "2014-04-01",
+                    "type": "config",
+                    "name": "web",
+                    "dependsOn": [
+                        "[resourceId('microsoft.web/sites/', variables('sites_bcweb_name'))]",
+                        "[resourceId('microsoft.insights/components', variables('components_bcinsights_name'))]"
+                    ],
+                    "properties": {
+                        "appSettings": [
+                            {
+                                "Value": "[reference(concat('microsoft.insights/components/', variables('components_bcinsights_name'))).InstrumentationKey]",
+                                "Name": "INSTRUMENTATIONKEY"
+                            },
+                            {
+                                "Value": "[reference(concat('microsoft.insights/components/', variables('components_bcinsights_name'))).InstrumentationKey]",
+                                "Name": "APPINSIGHTS_INSTRUMENTATIONKEY"
+                            },  
+                            {
+                                "Value": "6.9.1",
+                                "Name": "WEBSITE_NODE_DEFAULT_VERSION"
+                            }, 
+                            {
+                                "Value": "80",
+                                "Name": "PORT"
+                            },
+                            {
+                                "Value": "[parameters('rpc_url')]",
+                                "Name": "RPC"
+                            }
+                        ]
+                    }
+                },
+                {
+                "apiVersion": "2015-08-01",
+                "name": "web",
+                 "type": "sourcecontrols",
+                 "dependsOn": [
+                        "[resourceId('Microsoft.Web/Sites', variables('sites_bcweb_name'))]"
+                ],
+                "properties": {
+                    "RepoUrl": "[parameters('bcweb_repo_url')]",
+                    "branch": "master",
+                    "IsManualIntegration": true
+                    }
+                }
+            ],
+            "dependsOn": [
+                "[resourceId('Microsoft.Web/serverfarms', variables('serverfarms_webplan_name'))]"
+            ]
+        }     
+    ],
+    "outputs": {
+        "INSTRUMENTATIONKEY" : {
+            "type" : "string",
+            "value": "[reference(concat('microsoft.insights/components/', variables('components_bcinsights_name'))).InstrumentationKey]"
+        },
+        "APPINSIGHTS_INSTRUMENTATIONKEY" : {
+            "type" : "string",
+            "value": "[reference(concat('microsoft.insights/components/', variables('components_bcinsights_name'))).InstrumentationKey]"
+        },
+        "WEB_URL" : {
+            "type" : "string",
+            "value": "[concat('https://', variables('sites_bcweb_name'),'.azurewebsites.net/')]"
+        }
+    }
+}
