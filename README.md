@@ -11,7 +11,7 @@ You will need to perform the following steps to get your environment up and conf
 3. [Setup of a developer vm and tools](DeveloperSetup.md)
 
 ## Writing your first smart contract and integrating it into an application
-1. [First smart contract using Mist](HelloSmartContract.md)
+1. [First smart contract using Mist](HelloSmartContracts.md)
 2. [Building an API for your smart contract](HelloSmartApi.md)
 3. [Development and Deployment of a Smart contract using Truffle](DevSmartContract.md)
 4. [Development of a DApp](Dapp.md)
