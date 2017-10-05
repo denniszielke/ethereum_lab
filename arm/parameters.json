@@ -5,13 +5,10 @@
         "deployment_name": {
             "value": "dz11"
         },
-        "botweb_repo_url": {
-            "value": "https://github.com/denniszielke/hackbotadvanced.git"
+        "bcweb_repo_url": {
+            "value": "https://github.com/denniszielke/ethereum_lab.git"
         },
-        "bot_app_id": {
-            "value": null
-        },
-        "bot_app_password": {
+        "rpc_url": {
             "value": null
         }
     }
