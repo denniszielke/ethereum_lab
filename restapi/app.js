@@ -22,6 +22,7 @@ var contractAddress = process.env.CONTRACT_ADDRESS;
 var HelloSmartContract = contract(helloContractAbi);
 var web3 = new Web3(new Web3.providers.HttpProvider(rpcEndpoint));
 
+HelloSmartContract.at(contractAddress);
 app.get("/getWord", function (req, res) {
     console.log("triggering get word");
     HelloSmartContract.setProvider(web3.currentProvider);

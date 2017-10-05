@@ -59,11 +59,12 @@ Read the value again and you will notice the change
 In the folder restapi you will find a demo nodejs that you can use and configure:
 1. Copy the '.env_template' file and update its value in a new file named '.env'
 2. Update the config values with your smart contract adress and your rpc endpoint (use testrpc if you want)
-3. Install the npm dependencies by running opening a cmd (or terminal if you use vscode)
+3. If you have changed the smart contract make sure to update the file HelloSmartContract.json with the correct abi.
+4. Install the npm dependencies by running opening a cmd (or terminal if you use vscode)
 ~~~
 npm install
 ~~~
-4. Launch the api by running 
+5. Launch the api by running 
 ~~~
 npm start
 ~~~
@@ -79,7 +80,9 @@ The api is now up and running and ready to interact with. So far there is no use
 curl -X POST http://localhost:8083/getWord
 ~~~
 
-2. Update the value
+2. Update the value and 
 ~~~
 curl -X POST -H 'user:0x562d6b80f5a636d833fe9893f18290aef04a2be3' -H 'word:HalloWelt' -H 'password:df19678e92edee25983ae83d99e2ea721b2475be03c7e5a7cc72c8029d9f4e3b' http://localhost:8083/setWord
 ~~~
+
+![](/img/2017-10-05-22-28-34.png)

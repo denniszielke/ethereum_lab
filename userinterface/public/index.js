@@ -1,26 +1,42 @@
 if(typeof web3 !== 'undefined')
-var web3 = new Web3(web3.currentProvider);
+  var web3 = new Web3(web3.currentProvider);
 else
-web3 = new Web3(new Web3.providers.HttpProvider("http://localhost:8545"));
-var abiArray = [ { "constant": false, "inputs": [], "name": "kill", "outputs": [], "payable": false, "stateMutability": "nonpayable", "type": "function" }, { "constant": false, "inputs": [ { "name": "w", "type": "string" } ], "name": "setWord", "outputs": [], "payable": false, "stateMutability": "nonpayable", "type": "function" }, { "constant": true, "inputs": [], "name": "getWord", "outputs": [ { "name": "", "type": "string", "value": "HelloPatrick" } ], "payable": false, "stateMutability": "view", "type": "function" }, { "inputs": [ { "name": "_word", "type": "string", "index": 0, "typeShort": "string", "bits": "", "displayName": "&thinsp;<span class=\"punctuation\">_</span>&thinsp;word", "template": "elements_input_string", "value": "HelloDennis" } ], "payable": false, "stateMutability": "nonpayable", "type": "constructor" }, { "anonymous": false, "inputs": [ { "indexed": false, "name": "a", "type": "address" } ], "name": "Changed", "type": "event" } ];
-VotingContract = web3.eth.contract(abiArray);
+  web3 = new Web3(new Web3.providers.HttpProvider("http://localhost:8545"));
 
-// In your nodejs console, execute contractInstance.address to get the address at which the contract is deployed and change the line below to use your deployed address
-contractInstance = VotingContract.at('0x0e370db711e0e4706087dad7ccb78cf052ee0e5f');
+var HelloSmartContract = TruffleContract(HelloContractAbi);
+HelloSmartContract.setProvider(web3.currentProvider);
 
 function setWord() {
   var word = $("#word").val();
+  console.log("setting word");
+  console.log(word);
   try {
-    contractInstance.setWord(word, {from: web3.eth.accounts[0]}, function() {
-      $("#currentword").html(contractInstance.getWord.call().toString());
-    });
+    HelloSmartContract.deployed().then(function(contractInstance) {
+      if (contractInstance !== undefined){
+          contractInstance.setWord(word, {gas: 140000, from: web3.eth.accounts[0]}).then(function(v) {
+            console.log("set value");
+            contractInstance.getWord.call().then(function(v) {
+              console.log("got value");
+              console.log(v.toString());
+              $("#currentword").html(v.toString());
+            });
+          });
+        }
+    }); 
   } catch (err) {
   }
 }
 
 $(document).ready(function() {
-    var val = contractInstance.getWord.call().toString();
-    console.log(val);
-    $("#currentword").html(val);
+  console.log("getting value");
+  HelloSmartContract.deployed().then(function(contractInstance) {
+    if (contractInstance !== undefined){
+        contractInstance.getWord.call().then(function(v) {
+            console.log("got value");
+            console.log(v.toString());
+            $("#currentword").html(v.toString());
+        });
+    }
+  });
 });
 
