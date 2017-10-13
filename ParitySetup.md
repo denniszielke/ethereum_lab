@@ -36,13 +36,13 @@ https://github.com/paritytech/parity/wiki/Configuring-Parity#config-file
 mkdir -p ~/.local/share/io.parity.ethereum/ && touch ~/.local/share/io.parity.ethereum/config.toml
 ~~~
 
-and add the contents from config.toml to it
+and add the contents from [config.toml](https://raw.githubusercontent.com/denniszielke/ethereum_lab/master/parity/config.toml) to it
 
 ~~~
 nano ~/.local/share/io.parity.ethereum/config.toml
 ~~~
 
-8. Add your devchain json config file contents to it
+8. Add your [devchain.json](https://raw.githubusercontent.com/denniszielke/ethereum_lab/master/parity/devChain.json) config file contents to it
 
 ~~~
 nano ~/.local/share/io.parity.ethereum/ownDevChain.json
@@ -88,7 +88,7 @@ sudo apt-get install nginx
 
 Use the default /etc/nginx/nginx.conf
 
-Edit /etc/nginx/sites-enabled/default and take the values from /parity/nginxssl.conf
+Edit /etc/nginx/sites-enabled/default and take the values from [nginxssl.conf](https://raw.githubusercontent.com/denniszielke/ethereum_lab/master/parity/nginxssl.conf)
 ~~~
 nano /etc/nginx/sites-enabled/default
 ~~~
