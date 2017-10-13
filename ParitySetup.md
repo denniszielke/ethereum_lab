@@ -1,5 +1,7 @@
 # Installing Parity on Azure
 
+Provision an Ubuntu 16.04 LTS in Azure an connect to it.
+
 ## Installing dependencies
 https://github.com/paritytech/parity/wiki/Setup
 
@@ -99,3 +101,5 @@ sudo service nginx start
 ~~~
 
 HAPPY HACKING!
+
+![](/img/2017-10-13-11-57-16.png)
