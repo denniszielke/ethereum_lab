@@ -7,7 +7,7 @@ contract HelloSmartContract {
     address owner;
     
     // constructor
-    function HelloSmartContract(string _word) {
+    function HelloSmartContract(string _word) public {
         word = _word;
         owner = msg.sender;
     }
@@ -22,17 +22,17 @@ contract HelloSmartContract {
     }
     
     // read value function - can be called without transaction
-    function getWord() constant returns(string) {
+    function getWord() public constant returns(string) {
         return word; // return value
     }
     
     // set value function - called by transaction
-    function setWord(string w) onlyOwner {
+    function setWord(string w) public onlyOwner {
         word = w; // set value
         Changed(msg.sender); // trigger changed event
     }
 
-    function kill() onlyOwner { 
+    function kill() public onlyOwner { 
         selfdestruct(owner);  // kills this contract and sends remaining funds back to creator
     }    
 }

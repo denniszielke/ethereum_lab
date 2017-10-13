@@ -7,14 +7,14 @@ contract Purchase {
     enum State { Created, Locked, Inactive }
     State public state;
 
-    function Purchase() payable {
+    function Purchase() public payable {
         seller = msg.sender;
         value = msg.value / 2;
         if (2 * value != msg.value) 
             revert();
     }
 
-    modifier require(bool _condition) {
+    modifier required(bool _condition) {
         if (!_condition) 
             revert();
         _;
@@ -45,7 +45,7 @@ contract Purchase {
     /// Abort the purchase and reclaim the ether.
     /// Can only be called by the seller before
     /// the contract is locked.
-    function abort() onlySeller inState(State.Created) {
+    function abort() public onlySeller inState(State.Created) {
         aborted();
         state = State.Inactive;
         if (!seller.send(this.balance))
@@ -56,7 +56,7 @@ contract Purchase {
     /// Transaction has to include `2 * value` ether.
     /// The ether will be locked until confirmReceived
     /// is called.
-    function confirmPurchase() inState(State.Created) require(msg.value == 2 * value) payable {
+    function confirmPurchase() public inState(State.Created) required(msg.value == 2 * value) payable {
         purchaseConfirmed();
         buyer = msg.sender;
         state = State.Locked;
@@ -64,7 +64,7 @@ contract Purchase {
 
     /// Confirm that you (the buyer) received the item.
     /// This will release the locked ether.
-    function confirmReceived() onlyBuyer inState(State.Locked) {
+    function confirmReceived() public onlyBuyer inState(State.Locked) {
         itemReceived();
         // It is important to change the state first because
         // otherwise, the contracts called using `send` below

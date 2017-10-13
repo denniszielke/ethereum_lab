@@ -14,23 +14,23 @@ contract Voting {
   bytes32[] public candidateList;
 
   // Initialize all the contestants
-  function Voting(bytes32[] candidateNames) {
+  function Voting(bytes32[] candidateNames) public {
     candidateList = candidateNames;
   }
 
-  function totalVotesFor(bytes32 candidate) returns (uint8) {
+  function totalVotesFor(bytes32 candidate) public constant returns (uint8) {
     if (validCandidate(candidate) == false) 
       revert();
     return votesReceived[candidate];
   }
 
-  function voteForCandidate(bytes32 candidate) {
+  function voteForCandidate(bytes32 candidate) public {
     if (validCandidate(candidate) == false) 
       revert();
     votesReceived[candidate] += 1;
   }
 
-  function validCandidate(bytes32 candidate) returns (bool) {
+  function validCandidate(bytes32 candidate) public constant returns (bool) {
     for(uint i = 0; i < candidateList.length; i++) {
       if (candidateList[i] == candidate) {
         return true;
