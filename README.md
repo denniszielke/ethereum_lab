@@ -6,6 +6,10 @@ This project describes how to set up a blockchain environment with samples to ru
 
 ## Setting up the Hackathon environment
 You will need to perform the following steps to get your environment up and configured:
+If you want to go fast and test in a small chain use the following to setup a parity node:
+0. [Setup of a parity dev nod](ParitySetup.md)
+
+If you want to go big go for a consortium deployment:
 1. [Deployment and configuration of Azure Ethereum Consortium Blockchain](EnvironmentSetup.md)
 2. [Deployment of Ethereum Explorer Web App](ExplorerSetup.md)
 3. [Setup of a developer vm and tools](DeveloperSetup.md)

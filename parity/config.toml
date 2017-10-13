@@ -1,0 +1,56 @@
+# This config should be placed in following path:
+#   ~/.local/share/io.parity.ethereum/config.toml
+
+[parity]
+# Local Development Chain
+chain = "/home/userame/.local/share/io.parity.ethereum/ownDevChain.json"
+
+[footprint]
+# Increase performance on HDD.
+db_compaction = "hdd"
+
+[rpc]
+# Only selected APIs will be exposed over this interface.
+apis = ["web3", "eth", "net", "parity", "rpc", "personal", "signer", "parity_accounts", "traces", "parity_set"]
+#  JSON-RPC will be listening for connections on IP 10.0.0.4.
+interface = "10.0.0.4"
+hosts = ["*"]
+
+[ipc]
+# Only selected APIs will be exposed over this interface.
+disable = false
+apis = ["web3", "eth", "net", "parity", "parity_accounts", "traces", "rpc", "personal", "signer", "parity_set"]
+hosts = ["*"]
+
+[mining]
+# Targeting 10000000 gas per block when sealing a new block.
+gas_floor_target = "10000000"
+# Gas limit will be raised at most by 15000000 gas.
+gas_cap = "15000000"
+# Parity will reject transactions above 10000000 gas.
+tx_gas_limit = "10000000"
+# Account address to receive reward when block is mined.
+author = "0x00E9627736daBd961BeC44897F05b604A23027D5"
+# New pending block will be created only once per 1 milliseconds.
+reseal_min_period = 1
+
+[ui]
+#  Wallet will listen for connections on IP 10.0.0.4.
+interface = "10.0.0.4"
+hosts = ["*"]
+
+[dapps]
+#  Dapps Server will listen for connections on IP 10.0.0.4.
+disable = false
+interface = "10.0.0.4"
+hosts = ["*"]
+
+[websockets]
+#  websockets will be listening for connections on IP 10.0.0.4.
+interface = "10.0.0.4"
+# Allows connecting from Origin 'all'.
+origins = ["*"]
+# Allow connections only using specified addresses.
+hosts = ["*"]
+# Only selected APIs will be exposed over this interface.
+apis = ["web3", "eth", "net", "parity", "parity_pubsub", "rpc", "secretstore", "personal", "parity_accounts", "traces", "signer", "parity_set"]
