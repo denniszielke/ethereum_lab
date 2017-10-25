@@ -71,7 +71,7 @@ Remember the adress. Open up your chaindev.json file and enter your adress (repl
 
 Restart parity and you should have enough ether to start.
 
-## Add ssl certicate
+## Add ssl certicate (optional)
 
 1. Add 443 to inbound rules
 ![](/img/2017-10-13-09-31-29.png)
