@@ -25,7 +25,7 @@ Change the inbound port rules to allow 443, 8546 and 8080 to your node in your n
 ![](/img/2017-10-13-08-29-11.png)
 
 5. Now we need to create our parity config - use the config generator from https://paritytech.github.io/parity-config-generator/ 
-Look up further documentation here:
+Look up further documentation here. You should be fine if you use the config.toml from the parity folder.
 https://github.com/paritytech/parity/wiki/Configuring-Parity#config-file
 
 
@@ -93,7 +93,7 @@ Edit /etc/nginx/sites-enabled/default and take the values from [nginxssl.conf](h
 nano /etc/nginx/sites-enabled/default
 ~~~
 
-4. Remember to update <subdomain>.<domain>.com with your values in the config file
+4. Remember to update subdomain.domain.com with your values in the config file
 
 5. Start ngingx
 ~~~
