@@ -46,7 +46,6 @@ nano ~/.local/share/io.parity.ethereum/config.toml
 
 ~~~
 nano ~/.local/share/io.parity.ethereum/ownDevChain.json
-~/.local/share/io.parity.ethereum/ownDevChain.json
 ~~~
 
 9. Launch your chain and surf to it on your browser
@@ -67,7 +66,7 @@ parity signer new-token
 Enter the output in your browser
 
 12. Now create an account. Notice that you do not have any ether on it.
-Remember the adress. Open up your chaindev.json file and enter your adress (replace the existing value 0x00E9627736daBd961BeC44897F05b604A23027D5 ).
+Remember the adress. Open up your ownDevChain.json file and enter your adress (replace the existing value 0x00E9627736daBd961BeC44897F05b604A23027D5 ).
 
 Restart parity and you should have enough ether to start.
 
